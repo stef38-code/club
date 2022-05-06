@@ -1,4 +1,4 @@
-package org.stephane.club.adherent.entities;
+package org.stephane.club.entities;
 
 public enum GenreEntity {
     HOMME,

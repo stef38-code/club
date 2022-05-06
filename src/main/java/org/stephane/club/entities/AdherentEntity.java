@@ -1,4 +1,4 @@
-package org.stephane.club.adherent.entities;
+package org.stephane.club.entities;
 
 import lombok.Getter;
 import lombok.Setter;

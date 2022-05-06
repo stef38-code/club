@@ -1,0 +1,5 @@
+#@no-log
+GET localhost:8080/adherents
+
+###
+GET localhost:8080/adherents/1

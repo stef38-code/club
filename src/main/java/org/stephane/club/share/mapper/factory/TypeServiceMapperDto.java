@@ -1,10 +1,10 @@
 package org.stephane.club.share.mapper.factory;
 
-import org.stephane.basketback.share.mapper.personne.PersonneDtoMapper;
-import org.stephane.basketback.share.mapper.sport.CategorieDtoMapper;
+import org.stephane.club.share.mapper.AdherentMapper;
+import org.stephane.club.share.mapper.factory.ServiceMapperDto;
 
 public enum TypeServiceMapperDto {
-    PERSONNE(PersonneDtoMapper.class), CATEGORIE(CategorieDtoMapper.class);
+    ADHERENT(AdherentMapper.class);
 
     private Class<? extends ServiceMapperDto> mapperClass;
 
