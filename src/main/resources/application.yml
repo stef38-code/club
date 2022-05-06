@@ -1,0 +1,58 @@
+#----------------------------
+# Server configuration
+#----------------------------
+server:
+  port:8081
+spring:
+  main:
+    lazy-initialization: on
+    banner-mode: "off"
+    allow-bean-definition-overriding: true #personnalisation de l'audit des tables
+    #Error
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_trace_param
+    include-exception: false
+    # Database
+  datasource:
+    driver-class-name: org.h2.Driver
+    #url: jdbc:h2:file:~/hexagonal/database;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+    url: jdbc:h2:file:~/club/db
+    username: sa
+    password: password
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    #si vous souhaitez que l'initialisation DataSource basée sur un script puisse s'appuyer sur la création de schéma effectuée par Hibernate,
+    # définissez spring.jpa.defer-datasource-initialization sur true.
+    defer-datasource-initialization: true
+    hibernate:
+      # When you launch the application for the first time - switch "none" at "create"
+      #Hibernate ddl auto (create, create-drop, update)
+      ddl-auto: create-drop
+      show-sql: true
+      database: h2
+      open-in-view: false
+      generate-ddl: true
+
+
+
+  h2:
+    console:
+    enabled: true
+    path: /h2-console
+  sql:
+    init:
+      platform: h2
+      mode: always
+
+
+
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: debug
+    org.hibernate: debug
+
