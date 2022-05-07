@@ -1,7 +1,6 @@
 package org.stephane.club.share.mapper.factory;
 
 import org.stephane.club.share.mapper.AdherentMapper;
-import org.stephane.club.share.mapper.factory.ServiceMapperDto;
 
 public enum TypeServiceMapperDto {
     ADHERENT(AdherentMapper.class);

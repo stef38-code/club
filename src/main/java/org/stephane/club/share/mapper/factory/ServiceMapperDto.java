@@ -2,9 +2,14 @@ package org.stephane.club.share.mapper.factory;
 
 import java.util.List;
 
-public abstract class ServiceMapperDto<I, D> {
-    public abstract I toEntity(D in);
-    public abstract D toDto(I out);
-    public abstract List<I> toEntities(List<D> in);
-    public abstract List<D> toDtos(List<I> out);
+/**
+ * Service Mapping
+ * @param <T> Entities
+ * @param <D> DTO
+ */
+public interface ServiceMapperDto<T, D> {
+      T toEntity(D in);
+      D toDto(T out);
+     List<T> toEntities(List<D> in);
+      List<D> toDtos(List<T> out);
 }

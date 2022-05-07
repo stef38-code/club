@@ -1,5 +1,10 @@
 package org.stephane.club.share.mapper.factory;
 
-public abstract class ServiceMapperFactoryDto<I, D> {
-    public abstract ServiceMapperDto<I, D> create(TypeServiceMapperDto type);
+/**
+ *
+ * @param <T> Entity
+ * @param <D> DTO
+ */
+public abstract class ServiceMapperFactoryDto<T, D> {
+    public abstract ServiceMapperDto<T, D> create(TypeServiceMapperDto type);
 }

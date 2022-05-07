@@ -1,9 +1,8 @@
 package org.stephane.club.services;
 
-import org.stephane.club.dto.AdherentDto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.stephane.club.share.defaut.service.DefaultService;
 
-import java.util.List;
-
-public interface AdherentService<T> extends DefaultService<T>{
+public interface AdherentService<T, D, R extends JpaRepository> extends DefaultService<T,D,R> {
 
 }
