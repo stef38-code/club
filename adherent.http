@@ -1,5 +1,42 @@
+### Tous Les Adherents
+#@name Tous_Les_Adherents
 #@no-log
 GET localhost:8080/adherents
 
 ###
+#@name Recherche 1 adhérent prècis
+#@no-log
 GET localhost:8080/adherents/1
+
+###
+#@name Ajout_Adherent
+#@no-log
+POST http://localhost:8080/adherents
+Content-Type: application/json
+
+{
+    "nom": "Krabs",
+    "prenom": "Eugène",
+    "dnaissance": "2020-09-29",
+    "genre": "HOMME",
+    "nlicence": "AZERTY999"
+}
+###
+#@name Supprimer 1 adhérent prècis
+#@no-log
+DELETE localhost:8080/adherents/609311a2-ff11-45bc-884c-2394cf464d7e
+
+###
+#@name update_Adherent
+#@no-log
+PUT http://localhost:8080/adherents
+Content-Type: application/json
+
+{
+  "id": "c22f7fc4-5e1f-4a89-ac58-3fe65d625dae",
+  "nom": "Etoile de mer",
+  "prenom": "Patrick",
+  "dnaissance": "2020-03-03",
+  "genre": "HOMME",
+  "nlicence": "AZERTY4"
+}

@@ -1,6 +1,6 @@
 package org.stephane.club.dto;
 
-import lombok.Data;
+import lombok.*;
 import org.stephane.club.entities.GenreEntity;
 
 import javax.validation.constraints.NotBlank;
@@ -8,7 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Data
+@Value(staticConstructor = "of")
+@Builder
 public class AdherentDto implements Serializable {
     private final String id;
     @NotBlank(message = "Le nom est obligatoire")

@@ -7,4 +7,10 @@ import java.util.List;
 public interface DefaultService<T, D, R extends JpaRepository> {
     List<D> findAll();
     D getById(String id);
+
+    void update(D dto);
+
+    void deleteById(String id);
+
+    D save(D dto);
 }

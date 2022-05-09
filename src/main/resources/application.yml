@@ -53,6 +53,6 @@ logging:
   pattern:
     console: "%d %-5level %logger : %msg%n"
   level:
-    org.springframework: debug
-    org.hibernate: debug
+    org.springframework: info
+    org.hibernate: info
 
