@@ -14,16 +14,17 @@ import java.util.Optional;
  * findAll()
  * getById()
  * save()
+ *
  * @param <T> entity
  * @param <D> Dto
- * @param <R> JpaRepository
  */
 @Slf4j
 @RequiredArgsConstructor
-public class DefaultServiceImpl<T, D, R extends JpaRepository> extends CreateMapperDto<T, D> implements DefaultService<T, D, R > {
-    private final R repository;
+public class DefaultServiceImpl<T, D> extends CreateMapperDto<T, D> implements DefaultService<T, D> {
+    private final JpaRepository repository;
     private TypeServiceMapperDto mapperType;
-    public DefaultServiceImpl(R repository, TypeServiceMapperDto mapperType) {
+
+    public <R extends JpaRepository> DefaultServiceImpl(R repository, TypeServiceMapperDto mapperType) {
         this.repository = repository;
         this.mapperType = mapperType;
     }
@@ -31,7 +32,7 @@ public class DefaultServiceImpl<T, D, R extends JpaRepository> extends CreateMap
     @Override
     public List<D> findAll() {
         List all = repository.findAll();
-        log.info(">> findAll > {} elements",all.size());
+        log.info(">> findAll > {} elements", all.size());
         return getMapper(mapperType).toDtos(all);
     }
 
@@ -39,8 +40,8 @@ public class DefaultServiceImpl<T, D, R extends JpaRepository> extends CreateMap
     public D getById(String id) {
         log.info(">> getById");
         Optional byId = repository.findById(id);
-        if(byId.isEmpty()){
-            log.warn(">> getById return null;//Todo A revoir" );
+        if (byId.isEmpty()) {
+            log.warn(">> getById return null;//Todo A revoir");
             return null;//Todo A revoir
         }
         T d = (T) byId.get();

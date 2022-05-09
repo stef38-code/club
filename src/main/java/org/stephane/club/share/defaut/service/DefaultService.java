@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface DefaultService<T, D, R extends JpaRepository> {
+public interface DefaultService<T, D> {
     List<D> findAll();
     D getById(String id);
 
