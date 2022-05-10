@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.stephane.club.config.filter.LoggingFilter;
 
 /**
- * Définition de la filtration
+ * Définition de la filtration pour afficher des informations dans les logs
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
