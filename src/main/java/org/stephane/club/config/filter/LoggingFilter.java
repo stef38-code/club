@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.stephane.club.share.tools.CustomTime;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class LoggingFilter implements Filter {
         filterchain.doFilter(request, response);
         LocalDateTime end = LocalDateTime.now();
         //Log End traitement
-        log.info("{} -> {} - End en {}", req.getMethod(), req.getRequestURI(), findDifference(start, end));
+        log.info("{} -> {} - End en {}", req.getMethod(), req.getRequestURI(), CustomTime.findDifferenceWithStringFormat(start, end));
     }
 
     private String getUuid() {
@@ -53,20 +54,5 @@ public class LoggingFilter implements Filter {
         MDC.remove(DEFAULT_MDC_UUID_TOKEN_KEY);
     }
 
-    private String findDifference(LocalDateTime from, LocalDateTime to) {
-        //
-        String strHeure = formatText(ChronoUnit.HOURS.between(from, to), "%d h");
-        String strMinutes = formatText(ChronoUnit.MINUTES.between(from, to), "%d m");
-        String strSecondes = formatText(ChronoUnit.SECONDS.between(from, to), "%d s");
-        String strMillisecondes = formatText(ChronoUnit.MILLIS.between(from, to), "%d ms");
 
-        return "".concat(strHeure).concat(strMinutes).concat(strSecondes).concat(strMillisecondes);
-    }
-
-    private String formatText(long value, String text) {
-        if (value <= 0 || StringUtils.isEmpty(text)) {
-            return StringUtils.EMPTY;
-        }
-        return String.format(text, value);
-    }
 }
