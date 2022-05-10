@@ -1,8 +1,10 @@
 package org.stephane.club.config.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.stephane.club.config.Slf4jMDCFilterConfiguration;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -33,10 +35,13 @@ public class LoggingFilter implements Filter {
         UUID uuid = UUID.randomUUID();
         Long start = System.currentTimeMillis();
         HttpServletRequest req = (HttpServletRequest) request;
-        request.setAttribute("request-id" , uuid);
-        log.info( "{} - remote host {}" , uuid , request.getRemoteHost() );
+        /*request.setAttribute("request-id" , uuid);*/
+        /*request.setAttribute(Slf4jMDCFilterConfiguration.DEFAULT_MDC_UUID_TOKEN_KEY , uuid);*/
+        MDC.put(Slf4jMDCFilterConfiguration.DEFAULT_MDC_UUID_TOKEN_KEY , uuid.toString());
+        /*log.info( "remote host {}" , uuid , request.getRemoteHost() );*/
+        log.info( "remote host {} - {} -> {} - Start",request.getRemoteHost(),req.getMethod(),req.getRequestURI());
         filterchain.doFilter(request, response);
-        log.info( "{} - {} -> {} - response in {}ms",
+        log.info( "{} - {} -> {} - End in {}ms",
                 uuid,req.getMethod(),req.getRequestURI(),
                 System.currentTimeMillis() - start );
     }
@@ -44,6 +49,7 @@ public class LoggingFilter implements Filter {
     @Override
     public void destroy() {
         log.info( "LoggingFilter destroyed" );
+        MDC.remove(Slf4jMDCFilterConfiguration.DEFAULT_MDC_UUID_TOKEN_KEY);
     }
 
 }

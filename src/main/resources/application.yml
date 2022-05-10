@@ -51,7 +51,7 @@ spring:
 
 logging:
   pattern:
-    console: "%d %-5level %logger : %msg%n"
+    console: "%d %-5level %logger |%X{Slf4jMDCFilter.UUID}| %msg%n"
   level:
     org.springframework: info
     org.hibernate: info
