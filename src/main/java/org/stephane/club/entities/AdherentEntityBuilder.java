@@ -16,7 +16,15 @@ public final class AdherentEntityBuilder {
     public static AdherentEntityBuilder create() {
         return new AdherentEntityBuilder();
     }
-
+    public AdherentEntityBuilder copy(AdherentEntity adherentEntity) {
+        this.id = adherentEntity.getId();
+        this.nom = adherentEntity.getNom();
+        this.prenom = adherentEntity.getPrenom();
+        dnaissance = adherentEntity.getDnaissance();
+        genre = adherentEntity.getGenre();
+        nlicence = adherentEntity.getNlicence();
+        return this;
+    }
     public AdherentEntityBuilder id(String id) {
         this.id = id;
         return this;
