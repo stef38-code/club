@@ -29,26 +29,6 @@ class AdherentEntityBuilderTest {
         then(adherentEntity.getId()).hasToString("42");
         then(adherentEntity.getGenre()).isEqualTo(GenreEntity.HOMME);
     }
-
-    /**
-     * Method under test: {@link AdherentEntityBuilder#create()}
-     */
-    @Test
-    void create2() {
-        // TODO: Complete this test.
-        //   Reason: R002 Missing observers.
-        //   Diffblue Cover was unable to create an assertion.
-        //   Add getters for the following fields or make them package-private:
-        //     AdherentEntityBuilder.dnaissance
-        //     AdherentEntityBuilder.genre
-        //     AdherentEntityBuilder.id
-        //     AdherentEntityBuilder.nlicence
-        //     AdherentEntityBuilder.nom
-        //     AdherentEntityBuilder.prenom
-
-        AdherentEntityBuilder.create();
-    }
-
     /**
      * Method under test: {@link AdherentEntityBuilder#copy(AdherentEntity)}
      */
