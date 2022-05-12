@@ -3,6 +3,7 @@ package org.stephane.club.share.defaut.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.stephane.club.config.aspect.TrackTime;
 import org.stephane.club.share.mapper.factory.CreateMapperDto;
 import org.stephane.club.share.mapper.factory.TypeServiceMapperDto;
 
@@ -20,15 +21,16 @@ import java.util.Optional;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class DefaultServiceImpl<T, D> extends CreateMapperDto<T, D> implements DefaultService<T, D> {
+public class DefaultServiceImpl<T, D,R extends JpaRepository> extends CreateMapperDto<T, D> implements DefaultService<T, D> {
     private final JpaRepository repository;
     private TypeServiceMapperDto mapperType;
 
-    public <R extends JpaRepository> DefaultServiceImpl(R repository, TypeServiceMapperDto mapperType) {
+    public DefaultServiceImpl(final R repository, TypeServiceMapperDto mapperType) {
         this.repository = repository;
         this.mapperType = mapperType;
     }
 
+    @TrackTime
     @Override
     public List<D> findAll() {
         List all = repository.findAll();
@@ -36,6 +38,7 @@ public class DefaultServiceImpl<T, D> extends CreateMapperDto<T, D> implements D
         return getMapper(mapperType).toDtos(all);
     }
 
+    @TrackTime
     @Override
     public D getById(String id) {
         log.info(">> getById");
@@ -48,6 +51,7 @@ public class DefaultServiceImpl<T, D> extends CreateMapperDto<T, D> implements D
         return getMapper(mapperType).toDto(d);
     }
 
+    @TrackTime
     @Override
     public void update(D dto) {
         log.info(">> update");
@@ -55,6 +59,7 @@ public class DefaultServiceImpl<T, D> extends CreateMapperDto<T, D> implements D
         repository.save(entityMpped);
     }
 
+    @TrackTime
     @Override
     public void deleteById(String id) {
         log.info(">> deleteById");
@@ -63,6 +68,7 @@ public class DefaultServiceImpl<T, D> extends CreateMapperDto<T, D> implements D
         repository.delete(entityMpped);
     }
 
+    @TrackTime
     @Override
     public D save(D dto) {
         log.info(">> save");

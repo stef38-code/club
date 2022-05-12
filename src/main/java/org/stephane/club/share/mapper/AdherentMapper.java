@@ -7,11 +7,4 @@ import org.stephane.club.share.mapper.factory.ServiceMapperDto;
 
 @Mapper
 public abstract class AdherentMapper implements ServiceMapperDto<AdherentEntity, AdherentDto> {
-/*
-
-    public abstract AdherentEntity toEntity(AdherentDto adherentDto);
-
-    public abstract AdherentDto  toDto( AdherentEntity adherentEntity);
-*/
-
 }

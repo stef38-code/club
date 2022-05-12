@@ -10,7 +10,7 @@ import org.stephane.club.share.mapper.factory.TypeServiceMapperDto;
 
 @Service
 @Slf4j
-public class AdherentServiceImpl extends DefaultServiceImpl<AdherentEntity, AdherentDto> implements AdherentService<AdherentEntity, AdherentDto>{
+public class AdherentServiceImpl extends DefaultServiceImpl<AdherentEntity, AdherentDto, AdherentRepository> implements AdherentService<AdherentEntity, AdherentDto> {
     public AdherentServiceImpl(AdherentRepository repository) {
         super(repository, TypeServiceMapperDto.ADHERENT);
     }
