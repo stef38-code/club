@@ -7,10 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.stephane.club.entities.AdherentEntity;
-import org.stephane.club.entities.AdherentEntityBuilder;
-import org.stephane.club.entities.GenreEntity;
+import org.stephane.club.entities.*;
 import org.stephane.club.repository.AdherentRepository;
+import org.stephane.club.repository.AdresseEntityRepository;
 
 import java.time.LocalDate;
 
@@ -25,7 +24,7 @@ public class ClubApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(AdherentRepository adherentRepository) {
+    public CommandLineRunner demo(AdherentRepository adherentRepository, AdresseEntityRepository adresseEntityRepository) {
         return (args) -> {
             AdherentEntity bob = AdherentEntityBuilder.create()
                     .nom("Eponge")
@@ -61,6 +60,8 @@ public class ClubApplication {
             adherentRepository.save(sandy);
             adherentRepository.save(karen);
             adherentRepository.save(patrick);
+            AdresseEntity adresse1 = AdresseEntityBuilder.create().codePostal("07430").build();
+            adresseEntityRepository.save(adresse1);
         };
     }
 }
