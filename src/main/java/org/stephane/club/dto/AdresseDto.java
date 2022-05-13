@@ -2,7 +2,8 @@ package org.stephane.club.dto;
 
 import lombok.Builder;
 import lombok.Value;
-import org.stephane.club.fields.CodePostal;
+import org.stephane.club.share.validators.CodePostal;
+
 @Value(staticConstructor = "of")
 @Builder
 public class AdresseDto {
@@ -10,5 +11,7 @@ public class AdresseDto {
     /**
      * https://blog.bureaudeposte.net/bien-rediger-une-adresse-postale/
      */
-    private final CodePostal codePostal;
+    @CodePostal
+    private final String codePostal;
+
 }
