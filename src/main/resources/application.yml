@@ -2,7 +2,7 @@
 # Server configuration
 #----------------------------
 server:
-  port:8081
+  port:7979
 spring:
   main:
     lazy-initialization: on
@@ -56,3 +56,9 @@ logging:
     org.springframework: info
     org.hibernate: info
 
+enpoint:
+  geo:
+    api:
+      gouv:
+        communes:
+          codePostal:"https://geo.api.gouv.fr/communes?codePostal="

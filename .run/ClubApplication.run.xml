@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ClubApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" />
+    <module name="club" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="org.stephane.club.ClubApplication" />
+    <option name="VM_PARAMETERS" value="-Dserver.port=7979" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
