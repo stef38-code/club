@@ -61,4 +61,4 @@ enpoint:
     api:
       gouv:
         communes:
-          codePostal:"https://geo.api.gouv.fr/communes?codePostal="
+          codePostal:"https://geo.api.gouv.fr/communes?codePostal={codePosta}"

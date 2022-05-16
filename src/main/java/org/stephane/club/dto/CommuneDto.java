@@ -1,12 +1,18 @@
 package org.stephane.club.dto;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class CommuneDto {
-private String nom;
-private String code;
-private String codeDepartement;
-private String codeRegion;
-private List<String> codesPostaux;
-private int population;
+@RequiredArgsConstructor
+@Getter
+public class CommuneDto implements Serializable {
+private final String nom;
+private final String code;
+private final String codeDepartement;
+private final String codeRegion;
+private final List<String> codesPostaux;
+private final int population;
 }
