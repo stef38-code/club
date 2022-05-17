@@ -8,6 +8,8 @@ GET localhost:7979/adherents
 #@no-log
 GET localhost:7979/adherents/1
 
+
+
 ###
 #@name Ajout_Adherent
 #@no-log
@@ -40,3 +42,7 @@ Content-Type: application/json
   "genre": "HOMME",
   "nlicence": "AZERTY4"
 }
+###
+#@name Ajout_Adherent
+#@no-log
+GET http://localhost:7979/gouv/api/departement
