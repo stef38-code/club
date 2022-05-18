@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.stephane.club.dto.CommuneDto;
-import org.stephane.club.services.GouvCommunesService;
+import org.stephane.club.dto.CommuneApiGouvDto;
+import org.stephane.club.services.CommunesApiGouvService;
 
 import java.util.Collection;
 
@@ -22,12 +22,12 @@ import java.util.Collection;
 @Slf4j
 @RequiredArgsConstructor
 public class CommuneController {
-    private final GouvCommunesService service;
+    private final CommunesApiGouvService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Collection<CommuneDto>> getByCodePostal(@PathVariable String id) {
-        log.info(">> getByCodePostal");
-        Collection<CommuneDto> list =  service.rechercheCommunesParcodePostal(id);
+    public ResponseEntity<Collection<CommuneApiGouvDto>> getByCodePostal(@PathVariable String id) {
+        log.info(">> getByCodePostal {}",id);
+        Collection<CommuneApiGouvDto> list =  service.rechercheCommunesParcodePostal(id);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

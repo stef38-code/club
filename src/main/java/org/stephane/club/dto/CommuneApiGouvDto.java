@@ -8,7 +8,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Getter
-public class CommuneDto implements Serializable {
+public class CommuneApiGouvDto implements Serializable {
 private final String nom;
 private final String code;
 private final String codeDepartement;

@@ -10,28 +10,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.stephane.club.config.aspect.TrackTime;
-import org.stephane.club.dto.CommuneDto;
+import org.stephane.club.dto.CommuneApiGouvDto;
 
 import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class GouvCommunesServiceImpl implements GouvCommunesService {
+public class CommunesApiGouvServiceImpl implements CommunesApiGouvService {
     private final RestTemplate restTemplate;
-    @Value("${enpoint.geo.api.gouv.communes.codePostal:https://geo.api.gouv.fr/communes?codePostal={codePosta}}")
+    @Value("${enpoint.geo.api.gouv.communes.codePostal:https://geo.api.gouv.fr/communes?codePostal={codePostal}}")
     private String urlCommunesParcodePostal;
 
     @Override
     @TrackTime
-    public Collection<CommuneDto> rechercheCommunesParcodePostal(String codePosta) {
+    public Collection<CommuneApiGouvDto> rechercheCommunesParcodePostal(String codePosta) {
         log.info(">> rechercheCommunesParcodePostal");
         Map<String, String> vars = new HashMap<>();
-        vars.put("codePosta", codePosta);
-        ParameterizedTypeReference<List<CommuneDto>> responseType = new ParameterizedTypeReference<>() {
+        vars.put("codePostal", codePosta);
+        ParameterizedTypeReference<List<CommuneApiGouvDto>> responseType = new ParameterizedTypeReference<>() {
         };
 
-        ResponseEntity<List<CommuneDto>> response =
+        ResponseEntity<List<CommuneApiGouvDto>> response =
                 restTemplate.exchange(
                         urlCommunesParcodePostal,
                         HttpMethod.GET,

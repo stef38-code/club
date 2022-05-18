@@ -2,7 +2,7 @@
 # Server configuration
 #----------------------------
 server:
-  port:7979
+  port: 7979
 spring:
   main:
     lazy-initialization: on
@@ -61,4 +61,4 @@ enpoint:
     api:
       gouv:
         communes:
-          codePostal:"https://geo.api.gouv.fr/communes?codePostal={codePosta}"
+          codePostal:"https://geo.api.gouv.fr/communes?codePostal={codePostal}"
