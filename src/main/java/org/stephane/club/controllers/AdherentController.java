@@ -5,7 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.stephane.club.dto.AdherentDto;
-import org.stephane.club.services.AdherentService;
+import org.stephane.club.services.adherent.AdherentService;
 import org.stephane.club.share.defaut.controller.DefaultController;
 
 @RestController

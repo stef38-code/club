@@ -1,4 +1,4 @@
-package org.stephane.club.services;
+package org.stephane.club.services.adresse;
 
 import org.stephane.club.dto.CommuneApiGouvDto;
 

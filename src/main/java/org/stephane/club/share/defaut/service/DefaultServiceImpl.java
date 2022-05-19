@@ -1,5 +1,6 @@
 package org.stephane.club.share.defaut.service;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +23,7 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class DefaultServiceImpl<T, D,R extends JpaRepository> extends CreateMapperDto<T, D> implements DefaultService<T, D> {
+    @Getter
     private final JpaRepository repository;
     private TypeServiceMapperDto mapperType;
 

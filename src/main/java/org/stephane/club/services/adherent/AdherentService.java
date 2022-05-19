@@ -1,4 +1,4 @@
-package org.stephane.club.services;
+package org.stephane.club.services.adherent;
 
 import org.stephane.club.share.defaut.service.DefaultService;
 

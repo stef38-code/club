@@ -1,4 +1,4 @@
-package org.stephane.club.services;
+package org.stephane.club.services.adresse;
 
 import org.springframework.stereotype.Service;
 import org.stephane.club.entities.DepartementEntity;
