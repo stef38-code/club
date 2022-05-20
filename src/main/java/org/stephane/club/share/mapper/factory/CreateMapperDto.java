@@ -5,7 +5,7 @@ package org.stephane.club.share.mapper.factory;
  * @param <T> Entity
  * @param <D> DTO
  */
-public class CreateMapperDto<T, D> {
+public abstract class CreateMapperDto<T, D> {
     public ServiceMapperDto<T, D> getMapper(TypeServiceMapperDto mapperType) {
         return getServiceMapperFactory().create(mapperType);
     }
