@@ -5,10 +5,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.stephane.club.dto.AdresseDto;
+import org.stephane.club.dto.DepartementEntityDto;
 import org.stephane.club.entities.AdresseEntity;
+import org.stephane.club.entities.DepartementEntity;
 import org.stephane.club.services.adresse.AdresseService;
+import org.stephane.club.services.adresse.DepartementService;
 import org.stephane.club.share.defaut.controller.BaseController;
-import org.stephane.club.share.defaut.service.BaseService;
 
 @RestController
 @RequestMapping(
@@ -18,7 +20,7 @@ import org.stephane.club.share.defaut.service.BaseService;
 @Slf4j
 public class AdresseController extends BaseController<AdresseDto, AdresseEntity, String> {
 
-    public AdresseController(AdresseService service) {
+    public AdresseController(final AdresseService service) {
         super(service);
     }
 }

@@ -1,4 +1,4 @@
-package org.stephane.club.entities;
+package org.stephane.club.dto;
 
 import lombok.Data;
 
