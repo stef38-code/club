@@ -5,8 +5,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.stephane.club.dto.AdherentDto;
+import org.stephane.club.entities.AdherentEntity;
 import org.stephane.club.services.adherent.AdherentService;
-import org.stephane.club.share.defaut.controller.DefaultController;
+import org.stephane.club.share.defaut.controller.BaseController;
 
 @RestController
 @RequestMapping(
@@ -14,8 +15,9 @@ import org.stephane.club.share.defaut.controller.DefaultController;
         produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 
 @Slf4j
-public class AdherentController extends DefaultController<AdherentDto, AdherentService> {
-    public AdherentController(final AdherentService service) {
+public class AdherentController extends BaseController<AdherentDto, AdherentEntity, String> {
+
+    public AdherentController(AdherentService service) {
         super(service);
     }
 }

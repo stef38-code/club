@@ -55,16 +55,4 @@ public class BaseRestController<D, E, KD, KE> {
         return ResponseEntity.ok(new ApiResponseWithData(ResponseCode.OK, dto));
     }
 
-    public ResponseEntity<?> search(Map<String, String> params) {
-
-        SearchResponseDto searchResponseDto = service.search(params);
-
-        return ResponseEntity.ok(
-                new ApiResponseWithPaging(ResponseCode.OK,
-                        searchResponseDto.getResults(),
-                        searchResponseDto.getPageable(),
-                        searchResponseDto.getTotalCount()
-                )
-        );
-    }
 }

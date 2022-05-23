@@ -6,6 +6,6 @@ import org.stephane.club.entities.AdherentEntity;
 
 import java.util.UUID;
 @Repository
-public interface AdherentRepository extends JpaRepository<AdherentEntity, UUID> {
+public interface AdherentRepository extends JpaRepository<AdherentEntity, String> {
 
 }
