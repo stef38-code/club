@@ -8,6 +8,6 @@ import org.stephane.club.share.defaut.service.BaseService;
 public abstract class AdherentService extends BaseService<AdherentDto, AdherentEntity,String> {
 
     public AdherentService(JpaRepository<AdherentEntity, String> repository) {
-        super(repository);
+        super(repository,"Adherent");
     }
 }

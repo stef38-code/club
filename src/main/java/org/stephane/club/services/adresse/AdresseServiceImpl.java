@@ -25,22 +25,7 @@ public class AdresseServiceImpl extends AdresseService {
     }
 
     @Override
-    protected AdresseEntity toEntity(AdresseDto in) {
-        return getMapper(TypeServiceMapperDto.ADRESSE).toEntity(in);
-    }
-
-    @Override
-    protected AdresseDto toDto(AdresseEntity out) {
-        return getMapper(TypeServiceMapperDto.ADRESSE).toDto(out);
-    }
-
-    @Override
-    protected List<AdresseEntity> toEntities(List<AdresseDto> in) {
-        return getMapper(TypeServiceMapperDto.ADRESSE).toEntities(in);
-    }
-
-    @Override
-    protected List<AdresseDto> toDtos(List<AdresseEntity> out) {
-        return getMapper(TypeServiceMapperDto.DEPARTEMENT).toDtos(out);
+    protected TypeServiceMapperDto getMapperType() {
+        return TypeServiceMapperDto.ADRESSE;
     }
 }

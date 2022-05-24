@@ -21,22 +21,8 @@ public class AdherentServiceImpl extends AdherentService {
     }
 
     @Override
-    protected AdherentEntity toEntity(AdherentDto in) {
-        return getMapper(TypeServiceMapperDto.ADHERENT).toEntity(in);
+    protected TypeServiceMapperDto getMapperType() {
+        return TypeServiceMapperDto.ADHERENT;
     }
 
-    @Override
-    protected AdherentDto toDto(AdherentEntity out) {
-        return getMapper(TypeServiceMapperDto.ADHERENT).toDto(out);
-    }
-
-    @Override
-    protected List<AdherentEntity> toEntities(List<AdherentDto> in) {
-        return getMapper(TypeServiceMapperDto.ADHERENT).toEntities(in);
-    }
-
-    @Override
-    protected List<AdherentDto> toDtos(List<AdherentEntity> out) {
-        return getMapper(TypeServiceMapperDto.ADHERENT).toDtos(out);
-    }
 }

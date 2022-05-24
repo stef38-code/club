@@ -10,6 +10,6 @@ import org.stephane.club.share.defaut.service.BaseService;
 public abstract class AdresseService extends BaseService<AdresseDto, AdresseEntity, String> {
 
     public AdresseService(JpaRepository<AdresseEntity, String> repository) {
-        super(repository);
+        super(repository,"Adresse");
     }
 }

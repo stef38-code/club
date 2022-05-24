@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface GouvApiCommuneRepository extends JpaRepository<CommuneApiGouvEntity, String> {
-    List<CommuneApiGouvEntity> getByCodePostal(String codePostal);
+    List<CommuneApiGouvEntity> findByCodePostal(String codePostal);
 
 }

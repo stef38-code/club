@@ -8,6 +8,6 @@ import org.stephane.club.share.defaut.service.BaseService;
 public abstract class DepartementService extends BaseService<DepartementEntityDto, DepartementEntity, String> {
 
     public DepartementService(JpaRepository<DepartementEntity, String> repository) {
-        super(repository);
+        super(repository,"Departement");
     }
 }

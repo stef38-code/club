@@ -22,22 +22,7 @@ public class DepartementServiceImpl  extends DepartementService {
     }
 
     @Override
-    protected DepartementEntity toEntity(DepartementEntityDto in) {
-        return getMapper(TypeServiceMapperDto.DEPARTEMENT).toEntity(in);
-    }
-
-    @Override
-    protected DepartementEntityDto toDto(DepartementEntity out) {
-        return getMapper(TypeServiceMapperDto.DEPARTEMENT).toDto(out);
-    }
-
-    @Override
-    protected List<DepartementEntity> toEntities(List<DepartementEntityDto> in) {
-        return getMapper(TypeServiceMapperDto.DEPARTEMENT).toEntities(in);
-    }
-
-    @Override
-    protected List<DepartementEntityDto> toDtos(List<DepartementEntity> out) {
-        return getMapper(TypeServiceMapperDto.DEPARTEMENT).toDtos(out);
+    protected TypeServiceMapperDto getMapperType() {
+        return TypeServiceMapperDto.DEPARTEMENT;
     }
 }
