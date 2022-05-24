@@ -25,7 +25,7 @@ public class CommuneController extends CommuneBaseController {
     public CommuneController(final CommunesApiGouvService service) {
         super(service);
     }
-    @GetMapping("/{codePostal}")
+    @GetMapping("codePostal/{id}")
     public ResponseEntity<List<CommuneApiGouvDto>> getByCodePostal(@PathVariable String id) {
         List<CommuneApiGouvDto> communeApiGouvDtos = service.rechercheCommunesParcodePostal(id);
         return new ResponseEntity<>( communeApiGouvDtos,HttpStatus.OK);
