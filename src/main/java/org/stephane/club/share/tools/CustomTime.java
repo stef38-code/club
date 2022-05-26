@@ -6,11 +6,14 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class CustomTime {
+    private CustomTime() {
+        throw new UnsupportedOperationException("CustomTime is a utility class and cannot be instantiated");
+    }
     public static String findDifferenceWithStringFormat(LocalDateTime from, LocalDateTime to) {
         //
-        String strHeure = formatText(ChronoUnit.HOURS.between(from, to), "%d h");
-        String strMinutes = formatText(ChronoUnit.MINUTES.between(from, to), "%d m");
-        String strSecondes = formatText(ChronoUnit.SECONDS.between(from, to), "%d s");
+        String strHeure = formatText(ChronoUnit.HOURS.between(from, to), "%d h ");
+        String strMinutes = formatText(ChronoUnit.MINUTES.between(from, to), "%d m ");
+        String strSecondes = formatText(ChronoUnit.SECONDS.between(from, to), "%d s ");
         String strMillisecondes = formatText(ChronoUnit.MILLIS.between(from, to), "%d ms");
 
         return "".concat(strHeure).concat(strMinutes).concat(strSecondes).concat(strMillisecondes);

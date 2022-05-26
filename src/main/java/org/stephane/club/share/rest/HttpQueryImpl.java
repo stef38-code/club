@@ -16,11 +16,11 @@ import java.util.Map;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class HttpQueryImpl implements HttpQuery {
+public class HttpQueryImpl<T> implements HttpQuery<T> {
     private final RestTemplate restTemplate;
 
     @Override
-    public <T> List getListByHttpQuery(String url, Map<String, Object> vars, ParameterizedTypeReference<List<T>> responseType) {
+    public List<T> getListByHttpQuery(String url, Map<String, Object> vars, ParameterizedTypeReference<List<T>> responseType) {
         ResponseEntity<List<T>> response =
                 restTemplate.exchange(
                         url
@@ -33,6 +33,7 @@ public class HttpQueryImpl implements HttpQuery {
         if (response.getStatusCode() == HttpStatus.OK) {
             return response.getBody();
         }
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
     }
+
 }
