@@ -1,7 +1,6 @@
 package org.stephane.club.config.filter;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -11,7 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -33,8 +32,13 @@ public class LoggingFilter implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) request;
         LocalDateTime start = LocalDateTime.now();
-
-        MDC.put(DEFAULT_MDC_UUID_TOKEN_KEY, getUuid());
+        String value = MDC.get(DEFAULT_MDC_UUID_TOKEN_KEY);
+        if (Objects.nonNull(value)) {
+            log.info("--------------- {} -> {}", DEFAULT_MDC_UUID_TOKEN_KEY, value);
+        } else {
+            log.info("Add --------------- {} ", DEFAULT_MDC_UUID_TOKEN_KEY);
+            MDC.put(DEFAULT_MDC_UUID_TOKEN_KEY, getUuid());
+        }
         //Log start traitement
         log.info("remote host {} - {} -> {} - Start", request.getRemoteHost(), req.getMethod(), req.getRequestURI());
 
