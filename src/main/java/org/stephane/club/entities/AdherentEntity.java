@@ -1,7 +1,10 @@
 package org.stephane.club.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.stephane.club.share.jpa.Auditable;
@@ -11,6 +14,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -34,4 +39,14 @@ public class AdherentEntity extends Auditable<String> implements Serializable {
     @Column(name = "genre")
     private GenreEntity genre;
     private String nlicence;
+
+    @ManyToMany(fetch = FetchType.EAGER,targetEntity = AdresseEntity.class, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JsonBackReference
+    @JoinTable(name = "personne_adresse", joinColumns = {@JoinColumn(name = "PERSONNE_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ADRESSE_ID", nullable = false)})
+    @Fetch(FetchMode.SELECT)
+    private Set<AdresseEntity> adresses = new HashSet<>();
 }

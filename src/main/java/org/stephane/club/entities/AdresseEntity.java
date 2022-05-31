@@ -1,7 +1,10 @@
 package org.stephane.club.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.stephane.club.share.jpa.Auditable;
@@ -9,6 +12,8 @@ import org.stephane.club.share.validators.CodePostal;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -34,4 +39,12 @@ public class AdresseEntity extends Auditable<String> implements Serializable {
     @CodePostal
     private String codePostal;
     private String ville;
+
+    @ManyToMany(targetEntity = AdherentEntity.class, mappedBy = "adresses",cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JsonManagedReference
+    @Fetch(FetchMode.SUBSELECT)
+    private Set<AdherentEntity> personnes = new HashSet<>();
 }
