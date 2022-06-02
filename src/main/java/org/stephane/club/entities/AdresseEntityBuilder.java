@@ -16,10 +16,6 @@ public final class AdresseEntityBuilder {
         return this;
     }
 
-    public AdresseEntityBuilder codePostal(String codePostal) {
-        adresseEntity.setCodePostal(codePostal);
-        return this;
-    }
 
     public AdresseEntity build() {
         return adresseEntity;

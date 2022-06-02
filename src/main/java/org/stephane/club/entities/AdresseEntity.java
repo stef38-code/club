@@ -8,7 +8,6 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.stephane.club.share.jpa.Auditable;
-import org.stephane.club.share.validators.CodePostal;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -32,19 +31,28 @@ public class AdresseEntity extends Auditable<String> implements Serializable {
     private String batiment; //3- ENTREE-BATIMENT-IMMEUBLE-RESIDENCE
     private String voie; //4- NUMERO-LIBELLE DE LA VOIE
     private String lieuDit; //5- LIEU DIT ou SERVICE PARTICULIER DE DISTRIBUTION
-    /**
+    /* *//**
      * 6- CODE POSTAL et LOCALITE DE DESTINATION ou CODE CEDEX et LIBELLE
      * CEDEX
-     */
+     *//*
     @CodePostal
     private String codePostal;
-    private String ville;
-
-    @ManyToMany(targetEntity = AdherentEntity.class, mappedBy = "adresses",cascade = {
+    private String ville;*/
+    /**
+     * Liaison entre Adherent et adresse
+     */
+    @ManyToMany(targetEntity = AdherentEntity.class, mappedBy = "adresses", cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JsonManagedReference
     @Fetch(FetchMode.SUBSELECT)
     private Set<AdherentEntity> personnes = new HashSet<>();
+
+    /**
+     * Liaison entre une adresse et un code postal
+     */
+    @ManyToOne
+    @JoinColumn(name = "code", nullable = false)
+    private CommuneApiGouvEntity commune;
 }

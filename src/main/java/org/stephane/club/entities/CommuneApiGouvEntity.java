@@ -5,8 +5,12 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -20,4 +24,9 @@ public class CommuneApiGouvEntity implements Serializable {
     private  String codeRegion;
     private String codePostal;
     private int population;
+    /**
+     * Liaison vers des adresses
+     */
+    @OneToMany( targetEntity=AdresseEntity.class, mappedBy="commune" )
+    private List<AdresseEntity> adresses = new ArrayList<>();
 }

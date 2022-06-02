@@ -27,7 +27,7 @@ public class ClubApplication {
 
     @Bean
     public CommandLineRunner demo(AdherentRepository adherentRepository, AdresseEntityRepository adresseEntityRepository, DepartementEntityRepository departementEntityRepository) {
-        return (args) -> {
+        return args -> {
             AdherentEntity bob = AdherentEntityBuilder.create()
                     .nom("Eponge")
                     .prenom("Bob")
@@ -62,20 +62,21 @@ public class ClubApplication {
             adherentRepository.save(sandy);
             adherentRepository.save(karen);
             adherentRepository.save(patrick);
-            AdresseEntity adresse1 = AdresseEntityBuilder.create().codePostal("07430").build();
-            adresseEntityRepository.save(adresse1);
+           /* AdresseEntity adresse1 = AdresseEntityBuilder.create().codePostal("07430").build();
+            adresseEntityRepository.save(adresse1);*/
             addDepartement(departementEntityRepository);
         };
     }
 
     private void addDepartement(DepartementEntityRepository departementEntityRepository) {
-        List<DepartementEntity> of = List.of(new DepartementEntity("01","Ain","Auvergne-Rhône-Alpes"),
+        List<DepartementEntity> of;
+        of = List.of(new DepartementEntity("01","Ain", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("02","Aisne","Hauts-de-France"),
-                new DepartementEntity("03","Allier","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("03","Allier", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("04","Alpes-de-Haute-Provence","Provence-Alpes-Côte d'Azur"),
                 new DepartementEntity("05","Hautes-Alpes","Provence-Alpes-Côte d'Azur"),
                 new DepartementEntity("06","Alpes-Maritimes","Provence-Alpes-Côte d'Azur"),
-                new DepartementEntity("07","Ardèche","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("07","Ardèche", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("08","Ardennes","Grand Est"),
                 new DepartementEntity("09","Ariège","Occitanie"),
                 new DepartementEntity("10","Aube","Grand Est"),
@@ -83,7 +84,7 @@ public class ClubApplication {
                 new DepartementEntity("12","Aveyron","Occitanie"),
                 new DepartementEntity("13","Bouches-du-Rhône","Provence-Alpes-Côte d'Azur"),
                 new DepartementEntity("14","Calvados","Normandie"),
-                new DepartementEntity("15","Cantal","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("15","Cantal", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("16","Charente","Nouvelle-Aquitaine"),
                 new DepartementEntity("17","Charente-Maritime","Nouvelle-Aquitaine"),
                 new DepartementEntity("18","Cher","Centre-Val de Loire"),
@@ -95,7 +96,7 @@ public class ClubApplication {
                 new DepartementEntity("23","Creuse","Nouvelle-Aquitaine"),
                 new DepartementEntity("24","Dordogne","Nouvelle-Aquitaine"),
                 new DepartementEntity("25","Doubs","Bourgogne-Franche-Comté"),
-                new DepartementEntity("26","Drôme","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("26","Drôme", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("27","Eure","Normandie"),
                 new DepartementEntity("28","Eure-et-Loir","Centre-Val de Loire"),
                 new DepartementEntity("29","Finistère","Bretagne"),
@@ -107,12 +108,12 @@ public class ClubApplication {
                 new DepartementEntity("35","Ille-et-Vilaine","Bretagne"),
                 new DepartementEntity("36","Indre","Centre-Val de Loire"),
                 new DepartementEntity("37","Indre-et-Loire","Centre-Val de Loire"),
-                new DepartementEntity("38","Isère","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("38","Isère", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("39","Jura","Bourgogne-Franche-Comté"),
                 new DepartementEntity("40","Landes","Nouvelle-Aquitaine"),
                 new DepartementEntity("41","Loir-et-Cher","Centre-Val de Loire"),
-                new DepartementEntity("42","Loire","Auvergne-Rhône-Alpes"),
-                new DepartementEntity("43","Haute-Loire","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("42","Loire", "Auvergne-Rhône-Alpes"),
+                new DepartementEntity("43","Haute-Loire", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("44","Loire-Atlantique","Pays de la Loire"),
                 new DepartementEntity("45","Loiret","Centre-Val de Loire"),
                 new DepartementEntity("46","Lot","Occitanie"),
@@ -132,18 +133,18 @@ public class ClubApplication {
                 new DepartementEntity("60","Oise","Hauts-de-France"),
                 new DepartementEntity("61","Orne","Normandie"),
                 new DepartementEntity("62","Pas-de-Calais","Hauts-de-France"),
-                new DepartementEntity("63","Puy-de-Dôme","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("63","Puy-de-Dôme", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("64","Pyrénées-Atlantiques","Nouvelle-Aquitaine"),
                 new DepartementEntity("65","Hautes-Pyrénées","Occitanie"),
                 new DepartementEntity("66","Pyrénées-Orientales","Occitanie"),
                 new DepartementEntity("67","Bas-Rhin","Grand Est"),
                 new DepartementEntity("68","Haut-Rhin","Grand Est"),
-                new DepartementEntity("69","Rhône","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("69","Rhône", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("70","Haute-Saône","Bourgogne-Franche-Comté"),
                 new DepartementEntity("71","Saône-et-Loire","Bourgogne-Franche-Comté"),
                 new DepartementEntity("72","Sarthe","Pays de la Loire"),
-                new DepartementEntity("73","Savoie","Auvergne-Rhône-Alpes"),
-                new DepartementEntity("74","Haute-Savoie","Auvergne-Rhône-Alpes"),
+                new DepartementEntity("73","Savoie", "Auvergne-Rhône-Alpes"),
+                new DepartementEntity("74","Haute-Savoie", "Auvergne-Rhône-Alpes"),
                 new DepartementEntity("75","Paris","Île-de-France"),
                 new DepartementEntity("76","Seine-Maritime","Normandie"),
                 new DepartementEntity("77","Seine-et-Marne","Île-de-France"),
