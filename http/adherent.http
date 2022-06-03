@@ -6,7 +6,7 @@ GET localhost:7979/adherents
 ###
 #@name Recherche 1 adhérent prècis
 #@no-log
-GET localhost:7979/adherents/1
+GET localhost:7979/adherents/b6fc301a-5d82-4047-91ca-99723bb746d3
 
 
 

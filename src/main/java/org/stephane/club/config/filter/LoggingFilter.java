@@ -36,8 +36,9 @@ public class LoggingFilter implements Filter {
         if (Objects.nonNull(value)) {
             log.info("--------------- {} -> {}", DEFAULT_MDC_UUID_TOKEN_KEY, value);
         } else {
-            log.info("Add --------------- {} ", DEFAULT_MDC_UUID_TOKEN_KEY);
-            MDC.put(DEFAULT_MDC_UUID_TOKEN_KEY, getUuid());
+            String uuid = getUuid();
+            log.info("Add --------------- {} -> {}", DEFAULT_MDC_UUID_TOKEN_KEY, uuid);
+            MDC.put(DEFAULT_MDC_UUID_TOKEN_KEY, uuid);
         }
         //Log start traitement
         log.info("remote host {} - {} -> {} - Start", request.getRemoteHost(), req.getMethod(), req.getRequestURI());

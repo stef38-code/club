@@ -40,7 +40,7 @@ public class AdherentEntity extends Auditable<String> implements Serializable {
     private GenreEntity genre;
     private String nlicence;
 
-    @ManyToMany(fetch = FetchType.EAGER,targetEntity = AdresseEntity.class, cascade = {
+    @ManyToMany(fetch = FetchType.LAZY,targetEntity = AdresseEntity.class, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })

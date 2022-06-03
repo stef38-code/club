@@ -53,7 +53,7 @@ logging:
     console: "%d %-5level %logger |%X{Slf4jMDCFilter.UUID}| %msg%n"
   level:
     org.springframework: info
-    org.hibernate: info
+    org.hibernate: debug
     org.stephane: debug
 
 enpoint:
