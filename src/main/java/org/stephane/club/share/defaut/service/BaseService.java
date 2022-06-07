@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.stephane.club.config.aspect.TrackTime;
 import org.stephane.club.share.exception.DataNotFoundException;
 import org.stephane.club.share.mapper.factory.CreateMapperDto;
+import org.stephane.club.share.mapper.factory.ServiceMapperDto;
 import org.stephane.club.share.mapper.factory.TypeServiceMapperDto;
 
 import java.util.List;
@@ -26,13 +27,13 @@ public abstract class BaseService<D, T, ID> extends CreateMapperDto<T, D> {
     @TrackTime
     @Transactional
     public D create(D d) {
-        T entity = getMapper(getMapperType()).toEntity(d);
-        return getMapper(getMapperType()).toDto(repository.save(entity));
+        T entity = getMapper().toEntity(d);
+        return getMapper().toDto(repository.save(entity));
     }
     @TrackTime
     @Transactional
     public void update(D d) {
-        T entity = getMapper(getMapperType()).toEntity(d);
+        T entity = getMapper().toEntity(d);
         repository.save(entity);
     }
     @TrackTime
@@ -42,14 +43,14 @@ public abstract class BaseService<D, T, ID> extends CreateMapperDto<T, D> {
         if (o.isEmpty()) {
             throw new DataNotFoundException(title.concat(" Data Not Found !"));
         }
-        return getMapper(getMapperType()).toDto(o.get());
+        return getMapper().toDto(o.get());
     }
     @TrackTime
     @Transactional
     public void deleteById(ID id) {
         log.info(">> deleteById");
         D byId = get(id);
-        T entityMpped = getMapper(getMapperType()).toEntity(byId);
+        T entityMpped = getMapper().toEntity(byId);
         repository.delete(entityMpped);
     }
     @TrackTime
@@ -57,7 +58,11 @@ public abstract class BaseService<D, T, ID> extends CreateMapperDto<T, D> {
     public List<D> findAll() {
         List all = repository.findAll();
         log.info(">> findAll > {} elements", all.size());
-        return getMapper(getMapperType()).toDtos(all);
+        return getMapper().toDtos(all);
+    }
+
+    private ServiceMapperDto<T, D> getMapper() {
+        return getMapper(getMapperType());
     }
 
     protected abstract T newEntity(ID e);

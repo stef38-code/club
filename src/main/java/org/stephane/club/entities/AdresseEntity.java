@@ -3,6 +3,7 @@ package org.stephane.club.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
@@ -53,6 +54,7 @@ public class AdresseEntity extends Auditable<String> implements Serializable {
      * Liaison entre une adresse et un code postal
      */
     @ManyToOne
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "code", nullable = false)
     private CommuneApiGouvEntity commune;
 }

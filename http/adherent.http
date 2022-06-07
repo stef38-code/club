@@ -17,12 +17,31 @@ POST http://localhost:7979/adherents
 Content-Type: application/json
 
 {
-    "nom": "Krabs",
-    "prenom": "Eugène",
-    "dnaissance": "2020-09-29",
-    "genre": "HOMME",
-    "nlicence": "AZERTY999"
+  "nom": "Krabs",
+  "prenom": "Eugène",
+  "dnaissance": "2020-09-29",
+  "genre": "HOMME",
+  "nlicence": "AZERTY999",
+  "adresses": [
+    {
+      "destinataire": "",
+      "numBat": "",
+      "batiment": "",
+      "voie": "40 place de la république",
+      "commune": {
+        "nom": "Chatte",
+        "code": "38095",
+        "codeDepartement": "38",
+        "codeRegion": "84",
+        "codesPostaux": [
+          "38160"
+        ],
+        "population": 2480
+      }
+    }
+  ]
 }
+
 ###
 #@name Supprimer 1 adhérent prècis
 #@no-log
@@ -42,6 +61,7 @@ Content-Type: application/json
   "genre": "HOMME",
   "nlicence": "AZERTY4"
 }
+
 ###
 #@name Ajout_Adherent
 #@no-log

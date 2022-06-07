@@ -3,10 +3,7 @@ package org.stephane.club.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +24,6 @@ public class CommuneApiGouvEntity implements Serializable {
     /**
      * Liaison vers des adresses
      */
-    @OneToMany( targetEntity=AdresseEntity.class, mappedBy="commune" )
+    @OneToMany( targetEntity=AdresseEntity.class, mappedBy="commune" ,cascade = CascadeType.ALL)
     private List<AdresseEntity> adresses = new ArrayList<>();
 }

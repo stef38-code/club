@@ -5,7 +5,7 @@ import org.stephane.club.dto.AdresseDto;
 import org.stephane.club.entities.AdresseEntity;
 import org.stephane.club.share.mapper.factory.ServiceMapperDto;
 
-@Mapper
+@Mapper(uses={CommuneApiGouvMapper.class})
 public abstract class AdresseMapper implements ServiceMapperDto<AdresseEntity, AdresseDto> {
     /*@Mapping(target = "codePostal", source = "codePostal", qualifiedByName = "ToCodePostalString")*/
     public abstract AdresseEntity toEntity(AdresseDto in) ;

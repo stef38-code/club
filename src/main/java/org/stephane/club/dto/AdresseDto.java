@@ -24,4 +24,5 @@ public class AdresseDto implements Serializable {
     @CodePostal
     private final String codePostal;
     private Set<AdherentDto> personnes;
+    private CommuneApiGouvDto commune;
 }

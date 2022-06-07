@@ -5,6 +5,6 @@ import org.stephane.club.dto.AdherentDto;
 import org.stephane.club.entities.AdherentEntity;
 import org.stephane.club.share.mapper.factory.ServiceMapperDto;
 
-@Mapper
+@Mapper(uses = {AdresseMapper.class,CommuneApiGouvMapper.class})
 public abstract class AdherentMapper implements ServiceMapperDto<AdherentEntity, AdherentDto> {
 }
